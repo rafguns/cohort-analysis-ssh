@@ -1,6 +1,8 @@
 # Time and cohort analysis of publication patterns in SSH
 
-This repository is an accompaniment to a study, in which we carry out a cohort analysis of publication patterns in the social sciences and humanities.
+[![DOI](https://zenodo.org/badge/149768483.svg)](https://zenodo.org/badge/latestdoi/149768483)
+
+This repository is an accompaniment to [our article in *Frontiers in Research metrics and Analytics*](https://doi.org/10.3389/frma.2018.00038), in which we carry out a cohort analysis of publication patterns in the social sciences and humanities.
 
 ## Contents
 
