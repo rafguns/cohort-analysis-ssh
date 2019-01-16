@@ -19,7 +19,7 @@ def only_pubs_from(df, disciplines):
 
 
 def load_data(fname='data/data.csv'):
-    mt = pd.read_csv('data/data.csv', encoding='utf-8')
+    mt = pd.read_csv(fname, encoding='utf-8')
 
     # Make lists of author IDs. If no author ID is available, use empty list
     mt['allauthorids'] = mt.authorids.str.split(';')
@@ -134,7 +134,7 @@ def survivors(df, pubyear='Year'):
             au_cy = set(df_cy.aloi)
             au_c &= au_cy
         d[c] = au_c
-    
+
     return df[df.aloi.isin(set.union(*d.values()))].copy()
 
 
@@ -149,7 +149,7 @@ def chart_from_tidy_df(df, feature, pubyear='Year', kind='rel',
     '''
     if only_survivors:
         df = survivors(df, pubyear)
-    
+
     # Fix labels of axes
     ylabel = 'Mean percentage' if kind == 'rel' else 'Mean of n'
     df.rename(columns={'n': ylabel}, inplace=True)
@@ -158,7 +158,7 @@ def chart_from_tidy_df(df, feature, pubyear='Year', kind='rel',
     cohortnames = sorted(df.cohort.unique())
     df['cohort'].replace({years: f'{ch} ({years})' for ch, years in zip('ABCDEF', cohortnames)},
                          inplace=True)
-    
+
     # To get the legend in the right order and make sure the order of panels
     # is consistent across plots
     df.sort_values(by=['cohort', feature], inplace=True)
@@ -190,7 +190,7 @@ def overview_chart_full(mt, feature, pubyear='Year', kind='rel', **kwargs):
 
     '''
     dfs = []
-    
+
     for tmp_mt, label in [(mt, 'SSH'),
                           (only_pubs_from(mt, hum), 'Humanities'),
                           (only_pubs_from(mt, socsci), 'Soc. sciences')]:
@@ -198,7 +198,7 @@ def overview_chart_full(mt, feature, pubyear='Year', kind='rel', **kwargs):
                                                      kind=kind)
         tmp_df['Discipline'] = label
         dfs.append(tmp_df)
-        
+
     df = pd.concat(dfs, ignore_index=True)
-    
+
     return chart_from_tidy_df(df, feature, pubyear, kind, row='Discipline', **kwargs)
