@@ -1,4 +1,4 @@
-name: cohort2
+name: cohort
 channels:
   - defaults
 dependencies:

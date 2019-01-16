@@ -13,7 +13,7 @@ Python 3.6 is required. The following packages are used:
 * matplotlib 2.2
 * seaborn 0.9
 
-The easiest way to install all requirements is by using [Conda](https://conda.io/docs/). Run the following to create a conda environment named `cohort2` that contains everything you need:
+The easiest way to install all requirements is by using [Conda](https://conda.io/docs/). Run the following to create a conda environment named `cohort` that contains everything you need:
 
 ```
 conda env create -f environment.yml
